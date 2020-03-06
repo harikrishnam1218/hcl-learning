@@ -16,7 +16,7 @@ import com.hcl.swipe.model.Employee;
 public class EmployeeJdbcRepository implements EmployeeRepo{
 
 	 @Autowired
-	    JdbcTemplate jdbcTemplate;
+	 JdbcTemplate jdbcTemplate;
 	 
 	@Override
 	public List<Employee> findAll() {

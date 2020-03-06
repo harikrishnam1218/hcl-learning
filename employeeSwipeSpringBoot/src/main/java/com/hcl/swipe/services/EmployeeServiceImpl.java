@@ -2,13 +2,14 @@ package com.hcl.swipe.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.swipe.model.Employee;
 import com.hcl.swipe.repository.EmployeeRepo;
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-
+	@Autowired
 	private EmployeeRepo repo; 
 	
 	@Override
