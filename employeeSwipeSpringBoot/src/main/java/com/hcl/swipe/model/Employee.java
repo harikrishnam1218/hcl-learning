@@ -35,13 +35,14 @@ public class Employee {
 		this.id = id;
 	}
 	@NotNull
-	@NotEmpty
+	@NotEmpty(message="Employee Name not Empty")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	@NotEmpty(message="Employee Location not Empty")
 	public String getLocationName() {
 		return locationName;
 	}

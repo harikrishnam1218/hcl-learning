@@ -29,8 +29,8 @@ public class EmployeeController {
 		//return list;
 	}
 	@PostMapping(value="/save")
-	public int saveEmployee(@Valid @RequestBody Employee employee){
-		return employeeService.saveEmployee(employee);
+	public ResponseEntity saveEmployee(@Valid @RequestBody Employee employee){
+		return new ResponseEntity(employeeService.saveEmployee(employee),HttpStatus.OK);
 	}
 	
 	@PutMapping(value="/update")
