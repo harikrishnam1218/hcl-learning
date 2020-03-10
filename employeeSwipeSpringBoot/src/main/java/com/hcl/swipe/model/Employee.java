@@ -1,7 +1,9 @@
 package com.hcl.swipe.model;
 
 import java.util.Date;
-import java.util.List;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /*import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,13 +27,15 @@ public class Employee {
 	private String status;
 	//private List<TimeMonitorAudit> swipeData;
 	
-	
+	@NotNull
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@NotNull
+	@NotEmpty
 	public String getName() {
 		return name;
 	}
@@ -69,6 +73,8 @@ public class Employee {
 	public void setSwipeOut(Date swipeOut) {
 		this.swipeOut = swipeOut;
 	}
+	@NotNull
+	@NotEmpty
 	public String getStatus() {
 		return status;
 	}

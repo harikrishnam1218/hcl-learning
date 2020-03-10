@@ -2,6 +2,8 @@ package com.hcl.swipe.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hcl.swipe.exception.EmployeeNotFoundException;
 import com.hcl.swipe.model.Employee;
 import com.hcl.swipe.services.EmployeeService;
 
@@ -20,19 +23,19 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	@GetMapping(value="/list")
-	public List<Employee> employeDetails() {
+	public ResponseEntity<List<Employee>> employeDetails() throws EmployeeNotFoundException {
 		List<Employee> list=employeeService.fetchEmployees();
-		//return new ResponseEntity(list, HttpStatus.OK);
-		return list;
+		return new ResponseEntity(list, HttpStatus.OK);
+		//return list;
 	}
 	@PostMapping(value="/save")
-	public int saveEmployee(@RequestBody Employee employee){
+	public int saveEmployee(@Valid @RequestBody Employee employee){
 		return employeeService.saveEmployee(employee);
 	}
 	
 	@PutMapping(value="/update")
-	public int updateEmployee(@RequestBody Employee employee){
-		return employeeService.updateEmployee(employee);
+	public ResponseEntity updateEmployee(@Valid @RequestBody Employee employee) throws EmployeeNotFoundException{
+		return new ResponseEntity(employeeService.updateEmployee(employee),HttpStatus.OK);
 	}
 	
 }
